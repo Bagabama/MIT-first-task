@@ -33,10 +33,17 @@ const int Ts = 4e6 + 16;
 const int MOD = 998244353;
 const char HelloWorldnl = '\n';
 
-int fib(int n) {
-    if (n == 2) return 1;
-    if (n == 1) return 0;
-    return fib(n - 1) + fib(n - 2);
+void fib(int n) {
+    int pred2 = 0, pred1 = 1;
+    if (n >= 2) cout << "0 1 ";
+    else if (n == 1) cout << "0";
+    for (int i = 3; i <= n; i++) {
+        cout << pred2 + pred1 << ' ';
+        int temp = pred1;
+        pred1 = pred2 + pred1;
+        pred2 = temp;
+    }
+    cout << HelloWorldnl;
 }
 
 HelloWorldStruct MyHelloWorldStruct {
@@ -51,7 +58,7 @@ HelloWorldVoid HelloWorld() {
     MyHelloWorldStruct HelloWorld = MyHelloWorldStruct();
     HelloWorldCout << HelloWorld.HelloWorld << HelloWorldnl;
     int n; cin >> n;
-    cout << fib(n) << HelloWorldnl;
+    fib(n);
 }
 
 
